@@ -14,6 +14,9 @@ Due to recent experiences with the MojangAPI breaking and not allowing programme
 ## Usage
 
 - Open the settings.txt file, and insert your Minecraft E-mail, password, and the username to be sniped in the correct fields.
+
+> If you want to run the main.py version of the program, move all the python files into `src`.
+
 - Run the binary version or main.py -> Do this within the src folder! (Upon running, you'll be presented with a terminal and browser, depending if you're running it through main.py or the binary version.
 - Pay attention to the terminal with the log messages and instructions.
 - When the browser asks for the Captcha, solve it, and then head over to the terminal and press ENTER.
