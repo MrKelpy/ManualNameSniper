@@ -11,3 +11,5 @@ Due to recent experiences with the MojangAPI breaking and not allowing programme
 
 *Do not mess with the src folder, everything needs to be run from within it. If you want to move the binary file around or any of the files within, create a shortcut.*
 
+### Usage
+
