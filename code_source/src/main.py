@@ -15,9 +15,9 @@ from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.options import Options
 
 # Local application imports
-from get_credentials import EMAIL, PASSWORD, TARGET
-from get_username_drop import check_availability, wait_for_drop
-from LaminariaCore import *
+from src.get_credentials import EMAIL, PASSWORD, TARGET
+from src.get_username_drop import check_availability, wait_for_drop
+from src.LaminariaCore import *
 
 # Options and settings
 CHROMEDRIVER_PATH = os.path.join(os.getcwd(), "../resources", "chromedriver.exe")
@@ -92,22 +92,23 @@ with Chrome(CHROMEDRIVER_PATH, options=options, service_log_path=os.devnull) as 
         driver.implicitly_wait(60*5)
         driver.maximize_window()
 
-    # Locates the primary namechange button, clicks it;
-    # Enters the target name, and waits until the right time.
-    primary_namechange = driver.find_element_by_xpath("/html/body/div[1]/div/div[3]/div/div[1]/main/div/div/div/div/div[2]/div/div[5]/div[1]/dl/dd/button")
-    _ = primary_namechange.location_once_scrolled_into_view
-
-    time.sleep(0.5)
-    primary_namechange.click()
-
-    new_name_input = driver.find_element_by_id("newName")
-    _ = new_name_input.location_once_scrolled_into_view
-    new_name_input.send_keys(TARGET)
-
+    # Waits until the right time, and then changes the username automatically
     if not wait_for_drop(TARGET):
         log("This name is not available! Choose another name and try again.")
 
     else:
+        
+        driver.refresh()
+        primary_namechange = driver.find_element_by_xpath(
+            "/html/body/div[1]/div/div[3]/div/div[1]/main/div/div/div/div/div[2]/div/div[5]/div[1]/dl/dd/button")
+        _ = primary_namechange.location_once_scrolled_into_view
+
+        time.sleep(0.5)
+        primary_namechange.click()
+
+        new_name_input = driver.find_element_by_id("newName")
+        _ = new_name_input.location_once_scrolled_into_view
+        new_name_input.send_keys(TARGET)
 
         new_name_input.submit()
         log("Name change attempted. Check https://minecraft.net to verify the success!")
