@@ -3,7 +3,7 @@ Due to recent experiences with the MojangAPI breaking and not allowing programme
 
 ## Installation
 
-> Click [here](https://www.mediafire.com/file/6v0rvuunk8hijpx/ManualSniper.zip/file).
+> Click [here](https://www.mediafire.com/file/0ph9wkh4glv3hx2/ManualSniper_.zip/file).
 >
 > Download the .zip file
 >
