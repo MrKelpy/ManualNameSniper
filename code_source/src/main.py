@@ -13,11 +13,12 @@ import time
 # Third-Party Imports
 from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.keys import Keys
 
 # Local application imports
-from src.get_credentials import EMAIL, PASSWORD, TARGET
-from src.get_username_drop import check_availability, wait_for_drop
-from src.LaminariaCore import *
+from get_credentials import EMAIL, PASSWORD, TARGET
+from get_username_drop import check_availability, wait_for_drop
+from LaminariaCore import *
 
 # Options and settings
 CHROMEDRIVER_PATH = os.path.join(os.getcwd(), "../resources", "chromedriver.exe")
@@ -97,8 +98,9 @@ with Chrome(CHROMEDRIVER_PATH, options=options, service_log_path=os.devnull) as 
         log("This name is not available! Choose another name and try again.")
 
     else:
-        
-        driver.refresh()
+
+        driver.find_element_by_tag_name("html").send_keys(Keys.F5)
+
         primary_namechange = driver.find_element_by_xpath(
             "/html/body/div[1]/div/div[3]/div/div[1]/main/div/div/div/div/div[2]/div/div[5]/div[1]/dl/dd/button")
         _ = primary_namechange.location_once_scrolled_into_view
